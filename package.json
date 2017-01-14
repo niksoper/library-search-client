@@ -1,0 +1,23 @@
+{
+  "name": "library-search-client",
+  "version": "0.0.0",
+  "description": "A web application to get books available in the library, based on various book feeds.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niksoper/library-search-client.git"
+  },
+  "author": "Nicholas Soper",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/niksoper/library-search-client/issues"
+  },
+  "homepage": "https://github.com/niksoper/library-search-client#readme",
+  "devDependencies": {
+    "express": "^4.14.0"
+  }
+}
