@@ -5,6 +5,7 @@
     <title>Book lists</title>
   </head>
   <body>
+    
     <label for="input">Book title</label>
     <input type="text" id="input" />
     <button id="send">Get availability</button>
@@ -17,13 +18,20 @@
       integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
       crossorigin="anonymous"></script>
     <script>
-      $('#send').click(function() {
+      var input   = $('#input')
+      var results = $('#results')
+      
+      $('#send').click(onSend)
+      
+      function onSend() {
         var baseUrl = 'https://library-search-node-api.herokuapp.com/available-books?title='
-        var inputEncoded = encodeURIComponent($('#input').val())
-        $.get(baseUrl + inputEncoded, function( data ) {
-          $( "#results" ).html( JSON.stringify(data, null, 2) )
+        var inputEncoded = encodeURIComponent(input.val())
+        $.get(baseUrl + inputEncoded, function(data) {
+          results.html(JSON.stringify(data, null, 2))
         })
-      })
+        
+        results.html('Loading...')
+      }
     </script>
   </body>
 </html>
