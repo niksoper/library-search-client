@@ -4,8 +4,8 @@
   "description": "A web application to get books available in the library, based on various book feeds.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "webpack-dev-server --inline --hot --content-base build/",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -18,6 +18,17 @@
   },
   "homepage": "https://github.com/niksoper/library-search-client#readme",
   "devDependencies": {
-    "express": "^4.14.0"
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "express": "^4.14.0",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
   }
 }
