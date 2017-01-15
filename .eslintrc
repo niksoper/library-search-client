@@ -1,0 +1,9 @@
+{
+  "extends": "airbnb",
+  "rules": {
+    "semi": ["warn", "never"],
+    "linebreak-style": "off",
+    "no-trailing-spaces": "warn",
+    "eol-last": ["warn", "always"]
+  }
+}

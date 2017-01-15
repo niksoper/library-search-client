@@ -6,21 +6,21 @@ const books = [
   {
     title: 'Atonement',
   }, {
-    title: 'Fury'
+    title: 'Fury',
   }, {
-    title: 'The Muse'
+    title: 'The Muse',
   }, {
-    title: 'The Wasp Factory'
+    title: 'The Wasp Factory',
   }, {
-    title: 'Fear and Loathing in Las Vegas'
+    title: 'Fear and Loathing in Las Vegas',
   }, {
-    title: 'Pride and Prejudice'
+    title: 'Pride and Prejudice',
   },
 ]
 
 export default () => (
   <div>
     <h1>Biblio-check</h1>
-    <BookList books={books}/>
+    <BookList books={books} />
   </div>
 )

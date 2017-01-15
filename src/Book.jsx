@@ -1,5 +1,11 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
-export default ({ title }) => (
+const Book = ({ title }) => (
   <span>{title}</span>
 )
+
+Book.propTypes = {
+  title: PropTypes.string.isRequired,
+}
+
+export default Book

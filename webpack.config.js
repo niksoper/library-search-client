@@ -1,4 +1,5 @@
 var path = require("path");
+
 module.exports = {
   entry: {
     app: ["./src/index.js"],
@@ -11,6 +12,13 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
   module: {
+    preLoaders: [
+      {
+        test: /\.jsx?$/,
+        loaders: ['eslint-loader'],
+        include: path.join(__dirname, 'src')
+      }
+    ],
     loaders: [
       {
         test: /\.jsx?$/,
@@ -20,6 +28,10 @@ module.exports = {
           presets: ['es2015', 'react', 'stage-0']
         }
       }
-    ]
+    ],
+    eslint: {
+      configFile: './.eslintrc',
+      emitWarning: true
+    },
   }
 }
