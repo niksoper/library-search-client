@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
+import { increment } from './actions'
+
 const Counter = ({ count, onIncrementClick }) => (
   <div>
     <div>{count}</div>
@@ -14,7 +16,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onIncrementClick: () => {
-    dispatch({ type: 'INCREMENT' })
+    dispatch(increment())
   },
 })
 

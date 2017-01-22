@@ -3,21 +3,10 @@ import { render } from 'react-dom'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
+import reducers from './reducers'
 import Counter from './Counter'
 
-const reducer = (state, action) => {
-  console.log('ACTION', action) // eslint-disable-line no-console
-  if (action.type === 'INCREMENT') {
-    return Object.assign({}, state, { count: state.count + 1 })
-  }
-
-  return state
-}
-
-const initialState = { count: 1 }
-
-const store = createStore(reducer, initialState)
-
+const store = createStore(reducers)
 
 /* eslint-disable no-undef, react/jsx-filename-extension */
 render(
