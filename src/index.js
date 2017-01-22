@@ -5,7 +5,15 @@ import { Provider } from 'react-redux'
 
 import Counter from './Counter'
 
-const reducer = state => state
+const reducer = (state, action) => {
+  console.log('ACTION', action) // eslint-disable-line no-console
+  if (action.type === 'INCREMENT') {
+    return Object.assign({}, state, { count: state.count + 1 })
+  }
+
+  return state
+}
+
 const initialState = { count: 1 }
 
 const store = createStore(reducer, initialState)
