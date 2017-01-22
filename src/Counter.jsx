@@ -15,14 +15,10 @@ const mapStateToProps = state => ({
   count: state.count,
 })
 
-const mapDispatchToProps = dispatch => ({
-  onIncrementClick: () => {
-    dispatch(increment())
-  },
-  onDecrementClick: () => {
-    dispatch(decrement())
-  },
-})
+const mapDispatchToProps = {
+  onIncrementClick: increment,
+  onDecrementClick: decrement,
+}
 
 Counter.propTypes = {
   count: PropTypes.number.isRequired,
