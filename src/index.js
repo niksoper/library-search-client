@@ -4,14 +4,14 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
 import reducers from './reducers'
-import Counter from './Counter'
+import App from './App'
 
 const store = createStore(reducers)
 
 /* eslint-disable no-undef, react/jsx-filename-extension */
 render(
   <Provider store={store}>
-    <Counter />
+    <App />
   </Provider>,
   document.getElementById('main'),
 )
