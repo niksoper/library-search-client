@@ -4,7 +4,7 @@
   "description": "A web application to get books available in the library, based on various book feeds.",
   "main": "server.js",
   "scripts": {
-    "start": "webpack-dev-server --inline --hot --content-base build/",
+    "start": "webpack-dev-server --progress --inline --hot --content-base build/",
     "build": "webpack"
   },
   "repository": {
@@ -37,6 +37,8 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
+    "whatwg-fetch": "^2.0.2"
   }
 }

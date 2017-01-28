@@ -3,6 +3,12 @@ export default (count = 0, action) => {
   console.log('ACTION', action) // eslint-disable-line no-console
 
   switch (action.type) {
+    case 'DELAY_INCREMENT':
+      return dispatch => {
+        setTimeout(() => {
+          dispatch({ type: 'INCREMENT' })
+        }, 1000)
+      }
     case 'INCREMENT':
       return count + 1
     case 'DECREMENT':
