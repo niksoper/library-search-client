@@ -5,17 +5,17 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 
 import reducers from './reducers'
-import Counter from './Counter'
+import App from './App'
 
 const store = createStore(
   reducers,
-  applyMiddleware(thunk)
+  applyMiddleware(thunk),
 )
 
 /* eslint-disable no-undef, react/jsx-filename-extension */
 render(
   <Provider store={store}>
-    <Counter />
+    <App />
   </Provider>,
   document.getElementById('main'),
 )

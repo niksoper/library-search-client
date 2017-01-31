@@ -4,6 +4,7 @@
     "semi": ["warn", "never"],
     "linebreak-style": "off",
     "no-trailing-spaces": "warn",
-    "eol-last": ["warn", "always"]
+    "eol-last": ["warn", "always"],
+    "no-nested-ternary": "off"
   }
 }
