@@ -1,27 +1,28 @@
 import initialBooks from '../services/fixed-book-list'
 
-export default (state = initialBooks, action) => {
+const updateBook = books => id => update => (
+  books.map(book => (book.id === id ? update(book) : book))
+)
+
+export default (books = initialBooks, action) => {
   switch (action.type) {
 
     case 'START_GET_AVAILABILITY':
-      return state.map((book) => {
-        if (book.id !== action.payload.bookId) return book
-        return Object.assign({}, book, {
+      return updateBook(books)(action.payload.bookId)(book => (
+        Object.assign({}, book, {
           gettingAvailability: true,
-        })
-      })
+        },
+      )))
 
     case 'RECEIVE_AVAILABILITY':
-      return state.map((book) => {
-        if (book.id !== action.payload.bookId) return book
-        return Object.assign({}, book, {
+      return updateBook(books)(action.payload.bookId)(book => (
+        Object.assign({}, book, {
           gettingAvailability: false,
           library: action.payload.response,
-        })
-      })
-
+        },
+      )))
 
     default:
-      return state
+      return books
   }
 }
