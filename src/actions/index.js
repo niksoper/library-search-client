@@ -1,16 +1,28 @@
-import 'whatwg-fetch'
+import fetch from 'isomorphic-fetch'
 
-export const increment = () => ({
-  type: 'INCREMENT',
+export const getAvailability = bookId => ({
+  type: 'START_GET_AVAILABILITY',
+  payload: {
+    bookId,
+  },
 })
 
-export const decrement = () => ({
-  type: 'DECREMENT',
+export const receiveAvailability = (bookId, response) => ({
+  type: 'RECEIVE_AVAILABILITY',
+  payload: {
+    bookId,
+    response,
+  },
 })
 
-export const delayIncrement = () => (dispatch) => {
-  return window.fetch('https://library-search-node-api.herokuapp.com/available-books?title=emma')
-    .then((response) => console.log(response))
-    .then(() => dispatch(increment()))
-    .catch(() => dispatch(decrement()))
+export const fetchAvailability = dispatch => (id, title) => {
+  dispatch(getAvailability(id))
+
+  const endpointUrl = 'https://library-search-node-api.herokuapp.com/available-books'
+  const encodedTitle = encodeURIComponent(title)
+  const fullUrl = `${endpointUrl}?title=${encodedTitle}`
+
+  return fetch(fullUrl)
+    .then(response => response.json())
+    .then(json => dispatch(receiveAvailability(id, json)))
 }
