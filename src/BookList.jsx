@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { fetchAvailability } from './actions'
 
 import Book from './Book'
+import bookProp from './book-prop-type'
 
 const BookList = ({ books, updateAvailability }) => (
   <ul>{
@@ -33,17 +34,7 @@ const mapStateToProps = state => ({
 
 BookList.propTypes = {
   updateAvailability: PropTypes.func.isRequired,
-  books: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    gettingAvailability: PropTypes.bool.isRequired,
-    library: PropTypes.arrayOf(PropTypes.shape({
-      url: PropTypes.string.isRequired,
-      availability: PropTypes.arrayOf(PropTypes.shape({
-        library: PropTypes.string.isRequired,
-        status: PropTypes.string.isRequired,
-      })).isRequired,
-    })),
-  })).isRequired,
+  books: PropTypes.arrayOf(bookProp).isRequired,
 }
 
 const mapDispatchToProps = dispatch => ({
