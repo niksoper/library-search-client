@@ -6,6 +6,33 @@ import { bookProp } from './prop-types'
 
 import './Book.scss'
 
+function mapAvailability(bookAvailability) {
+  if (bookAvailability.length === 0) {
+    return (
+      <div className="availability">
+        Unavailable in favourite libraries
+      </div>
+    )
+  }
+
+  return (
+    <div>
+      <div className="availability">
+        In favourite libraries:
+      </div>
+      <ul>
+        {bookAvailability.map(availability => (
+          <li key={availability.url}>
+            <a href={availability.url} target="_blank" rel="noopener noreferrer">
+              {`${availability.availability.length} available`}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
 class Book extends Component {
   componentDidMount() {
     const { id, title } = this.props.children
@@ -16,7 +43,7 @@ class Book extends Component {
     const book = this.props.children
     const availability =
       book.gettingAvailability ? 'Getting Availability' :
-      book.library === null ? '' : `${book.library.length} available`
+      book.library === null ? '' : mapAvailability(book.library)
 
     return (
       <section className="book">
