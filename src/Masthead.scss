@@ -1,0 +1,11 @@
+@import './style/colours';
+
+.masthead {
+  margin: 15px 0;
+  padding: 1rem;
+
+  background-color: $orange;
+
+  font-size: 3rem;
+  text-align: center;
+}

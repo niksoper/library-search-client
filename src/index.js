@@ -15,11 +15,16 @@ const store = createStore(
   applyMiddleware(thunk, logger),
 )
 
-/* eslint-disable no-undef, react/jsx-filename-extension */
+/* eslint-disable no-undef */
+const root = document.createElement('div')
+document.body.appendChild(root)
+/* eslint-enable no-undef */
+
+/* eslint-disable react/jsx-filename-extension */
 render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('main'),
+  root,
 )
-/* eslint-enable no-undef, react/jsx-filename-extension */
+/* eslint-enable react/jsx-filename-extension */

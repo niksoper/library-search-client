@@ -4,14 +4,20 @@ import { connect } from 'react-redux'
 import Book from './Book'
 import { bookProp } from './prop-types'
 
+import './BookList.scss'
+
 const BookList = ({ books }) => (
-  <ul>{
-    books.map((book, i) => (
-      <li key={`book-${i + 1}`}>
-        <Book book={book} />
-      </li>
-    ))
-  }</ul>
+  <div className="bookList">
+    <ul>
+      {
+        books.map((book, i) => (
+          <li key={`book-${i + 1}`}>
+            <Book book={book} />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 )
 
 const mapStateToProps = state => ({

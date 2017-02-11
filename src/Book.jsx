@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { fetchAvailability } from './actions'
 import { bookProp } from './prop-types'
 
+import './Book.scss'
+
 class Book extends Component {
   componentDidMount() {
     const { id, title } = this.props.book
@@ -17,10 +19,10 @@ class Book extends Component {
       book.library === null ? '' : `${book.library.length} available`
 
     return (
-      <div>
-        <span>{book.title}</span>
-        <div>{availability}</div>
-      </div>
+      <section className="book">
+        <h1>{book.title}</h1>
+        <div className="availability">{availability}</div>
+      </section>
     )
   }
 }

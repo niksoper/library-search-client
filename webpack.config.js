@@ -1,4 +1,4 @@
-var path = require("path");
+const path = require("path")
 
 module.exports = {
   entry: ['babel-polyfill', './src/index.js'],
@@ -7,7 +7,7 @@ module.exports = {
     filename: "bundle.js",
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx', '.scss']
   },
   module: {
     rules: [
@@ -28,7 +28,20 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          { loader: "style-loader" },
+          { loader: "css-loader" },
+          { loader: "sass-loader" }
+        ]
+      },
+      {
+        test: /\.png$/,
+        loader: "url-loader",
+        query: { mimetype: "image/png" }
       }
-    ],
+    ]
   }
 }
