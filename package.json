@@ -4,7 +4,8 @@
   "description": "A web application to get books available in the library, based on various book feeds.",
   "main": "server.js",
   "scripts": {
-    "start": "webpack-dev-server --progress --inline --hot --content-base build/",
+    "start": "npm run build && node server",
+    "start:dev": "webpack-dev-server --progress --inline --hot --content-base build/",
     "build": "webpack -p"
   },
   "repository": {
@@ -40,6 +41,7 @@
     "webpack-dev-server": "^2.3.0"
   },
   "dependencies": {
+    "express": "^4.14.1",
     "isomorphic-fetch": "^2.2.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
