@@ -7,29 +7,28 @@ module.exports = {
     filename: "bundle.js",
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['.js', '.jsx']
   },
   module: {
-    preLoaders: [
+    rules: [
       {
         test: /\.jsx?$/,
-        loaders: ['eslint-loader'],
-        include: path.join(__dirname, 'src')
-      }
-    ],
-    loaders: [
+        exclude: /node_modules/,
+        enforce: 'pre',
+        use: [{ loader: 'eslint-loader' }]
+      },
       {
         test: /\.jsx?$/,
-        exclude: /(node_modules)/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['es2015', 'react', 'stage-0']
-        }
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['es2015', 'react', 'stage-0']
+            }
+          }
+        ]
       }
     ],
-    eslint: {
-      configFile: './.eslintrc',
-      emitWarning: true
-    },
   }
 }
