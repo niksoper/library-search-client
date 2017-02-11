@@ -1,25 +1,28 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
 
 import { fetchAvailability } from './actions'
 import { bookProp } from './prop-types'
 
-const Book = ({ book, updateAvailability }) => {
-  const availability =
-    book.gettingAvailability ? 'Getting Availability' :
-    book.library === null ? '' : `${book.library.length} available`
+class Book extends Component {
+  componentDidMount() {
+    const { id, title } = this.props.book
+    this.props.updateAvailability(id, title)
+  }
 
-  const { id, title } = book
+  render() {
+    const { book } = this.props
+    const availability =
+      book.gettingAvailability ? 'Getting Availability' :
+      book.library === null ? '' : `${book.library.length} available`
 
-  return (
-    <div>
-      <span>{title}</span>
-      <div>{availability}</div>
-      <button onClick={() => updateAvailability(id, title)}>
-        Update availability
-      </button>
-    </div>
-  )
+    return (
+      <div>
+        <span>{book.title}</span>
+        <div>{availability}</div>
+      </div>
+    )
+  }
 }
 
 Book.propTypes = {
