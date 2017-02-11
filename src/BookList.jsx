@@ -10,8 +10,8 @@ const BookList = ({ books }) => (
   <div className="bookList">
     <ul>
       {
-        books.map((book, i) => (
-          <li key={`book-${i + 1}`}>
+        books.map(book => (
+          <li key={book.id}>
             <Book book={book} />
           </li>
         ))
