@@ -1,5 +1,6 @@
 deployment:
   staging:
     branch: master
+    commands: npm run build
     heroku:
       appname: library-search-client
