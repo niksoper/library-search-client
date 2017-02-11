@@ -8,12 +8,12 @@ import './Book.scss'
 
 class Book extends Component {
   componentDidMount() {
-    const { id, title } = this.props.book
+    const { id, title } = this.props.children
     this.props.updateAvailability(id, title)
   }
 
   render() {
-    const { book } = this.props
+    const book = this.props.children
     const availability =
       book.gettingAvailability ? 'Getting Availability' :
       book.library === null ? '' : `${book.library.length} available`
@@ -28,7 +28,7 @@ class Book extends Component {
 }
 
 Book.propTypes = {
-  book: bookProp.isRequired,
+  children: bookProp.isRequired,
   updateAvailability: PropTypes.func.isRequired,
 }
 
