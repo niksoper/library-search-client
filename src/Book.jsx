@@ -1,11 +1,34 @@
 import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
 
-const Book = ({ title }) => (
-  <span>{title}</span>
-)
+import { fetchAvailability } from './actions'
+import { bookProp } from './prop-types'
 
-Book.propTypes = {
-  title: PropTypes.string.isRequired,
+const Book = ({ book, updateAvailability }) => {
+  const availability =
+    book.gettingAvailability ? 'Getting Availability' :
+    book.library === null ? '' : `${book.library.length} available`
+
+  const { id, title } = book
+
+  return (
+    <div>
+      <span>{title}</span>
+      <div>{availability}</div>
+      <button onClick={() => updateAvailability(id, title)}>
+        Update availability
+      </button>
+    </div>
+  )
 }
 
-export default Book
+Book.propTypes = {
+  book: bookProp.isRequired,
+  updateAvailability: PropTypes.func.isRequired,
+}
+
+const mapDispatchToProps = dispatch => ({
+  updateAvailability: fetchAvailability(dispatch),
+})
+
+export default connect(null, mapDispatchToProps)(Book)
