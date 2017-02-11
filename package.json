@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "webpack-dev-server --progress --inline --hot --content-base build/",
-    "build": "webpack"
+    "build": "webpack -p"
   },
   "repository": {
     "type": "git",
