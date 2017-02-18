@@ -27,6 +27,13 @@ export default (books = [], action) => {
         },
       )))
 
+    case 'AVAILABILITY_ERROR':
+      return updateBook(books)(action.payload.bookId)(book => ({
+        ...book,
+        gettingAvailability: false,
+        error: 'There was a problem getting availability',
+      }))
+
     case 'ADD_BOOK':
       return addBook(books)(action.payload.title)
 

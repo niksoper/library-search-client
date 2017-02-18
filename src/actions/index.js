@@ -15,6 +15,11 @@ export const receiveAvailability = (bookId, response) => ({
   },
 })
 
+const availabilityError = bookId => ({
+  type: 'AVAILABILITY_ERROR',
+  payload: { bookId },
+})
+
 export const addBook = dispatch => (title) => {
   dispatch({
     type: 'ADD_BOOK',
@@ -32,4 +37,5 @@ export const fetchAvailability = dispatch => (id, title) => {
   return fetch(fullUrl)
     .then(response => response.json())
     .then(json => dispatch(receiveAvailability(id, json)))
+    .catch(() => dispatch(availabilityError(id)))
 }

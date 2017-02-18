@@ -43,6 +43,7 @@ class Book extends Component {
     const book = this.props.children
     const availability =
       book.gettingAvailability ? 'Getting Availability' :
+      book.error ? book.error :
       book.library === null ? '' : mapAvailability(book.library)
 
     return (
