@@ -13,19 +13,17 @@ export default (books = [], action) => {
   switch (action.type) {
 
     case 'START_GET_AVAILABILITY':
-      return updateBook(books)(action.payload.bookId)(book => (
-        Object.assign({}, book, {
-          gettingAvailability: true,
-        },
-      )))
+      return updateBook(books)(action.payload.bookId)(book => ({
+        ...book,
+        gettingAvailability: true,
+      }))
 
     case 'RECEIVE_AVAILABILITY':
-      return updateBook(books)(action.payload.bookId)(book => (
-        Object.assign({}, book, {
-          gettingAvailability: false,
-          library: action.payload.response,
-        },
-      )))
+      return updateBook(books)(action.payload.bookId)(book => ({
+        ...book,
+        gettingAvailability: false,
+        library: action.payload.response,
+      }))
 
     case 'AVAILABILITY_ERROR':
       return updateBook(books)(action.payload.bookId)(book => ({
