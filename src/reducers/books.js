@@ -4,6 +4,11 @@ const updateBook = books => id => update => (
   books.map(book => (book.id === id ? update(book) : book))
 )
 
+const addBook = books => title => ([
+  bookFactory(title),
+  ...books.filter(book => book.title.toLowerCase() !== title.toLowerCase()),
+])
+
 export default (books = [], action) => {
   switch (action.type) {
 
@@ -23,10 +28,7 @@ export default (books = [], action) => {
       )))
 
     case 'ADD_BOOK':
-      return [
-        bookFactory(action.payload.title),
-        ...books,
-      ]
+      return addBook(books)(action.payload.title)
 
     default:
       return books
