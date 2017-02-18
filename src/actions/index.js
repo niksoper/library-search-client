@@ -15,6 +15,13 @@ export const receiveAvailability = (bookId, response) => ({
   },
 })
 
+export const addBook = dispatch => (title) => {
+  dispatch({
+    type: 'ADD_BOOK',
+    payload: { title },
+  })
+}
+
 export const fetchAvailability = dispatch => (id, title) => {
   dispatch(getAvailability(id))
 

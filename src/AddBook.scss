@@ -1,0 +1,16 @@
+.book-search {
+  padding: 0 25px;
+  text-align: center;
+
+  input {
+    display: inline-block;
+
+    margin: 0 5px;
+    padding: 5px;
+    width: 100%;
+    max-width: 500px;
+
+    line-height: 2rem;
+    font-size: 1.5rem;
+  }
+}

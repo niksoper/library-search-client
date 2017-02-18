@@ -1,10 +1,3 @@
-import uuid from 'uuid/v4'
+import bookFactory from './book-factory'
 
-export default titles => (
-  titles.map(title => ({
-    id: uuid(),
-    title,
-    gettingAvailability: false,
-    library: null,
-  }))
-)
+export default titles => titles.map(bookFactory)

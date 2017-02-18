@@ -1,9 +1,14 @@
 import React, { PropTypes } from 'react'
 
+import AddBook from './AddBook'
+
 import './Masthead.scss'
 
 const Masthead = ({ children }) => (
-  <h1 className="masthead">{children}</h1>
+  <div className="masthead">
+    <h1>{children}</h1>
+    <AddBook />
+  </div>
 )
 
 Masthead.propTypes = {
